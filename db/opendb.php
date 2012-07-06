@@ -1,4 +1,5 @@
 <?php
+include './config.php';
 /**
  * Opens a database connection and set the character set to utf-8. 
  */
