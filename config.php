@@ -46,6 +46,6 @@ $selQuery = "
  * " has been ..." till end.
  */
 
-$mesIntro = 'Success! Address: ';
-$mesEnding = ' has been succesfully unsubscribed from newsletter database.';
+$mesIntro = '<b>Success!</b> Email Address: <b>';
+$mesEnding = '</b></br>has been succesfully unsubscribed from the newsletter email database.';
 ?>
