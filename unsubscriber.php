@@ -44,4 +44,5 @@ if ($maintenance != 1) {
         echo $mesIntro . $mail . $mesEnding;
     }
 }
+$mysqli->close();
 ?>
