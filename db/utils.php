@@ -7,7 +7,6 @@ include 'opendb.php';
  * Also utility functions needed for the project.
  * Update: Removed the other functions from the project, no need to have them.
  */
-$sqlError = false;
 
 function sqlUnsubscribe($aQuery, $aUid) {
     global $mysqli;
@@ -16,6 +15,11 @@ function sqlUnsubscribe($aQuery, $aUid) {
     //execute unsubscribe statement
     $stmt->bind_param('s', $aUid);
     $stmt->execute();
+    if (mysqli_error($mysqli)) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 function sqliQuery($query) {
@@ -25,6 +29,8 @@ function sqliQuery($query) {
         if (mysqli_error($mysqli)) {
             var_dump($query, mysqli_error($mysqli));
             $sqlError = true;
+        } else {
+            $sqlError = false;
         }
         return $result;
     } else {
@@ -58,28 +64,41 @@ function checkUid($aFileName, $aUid) {
         return false;
     }
 }
+
 /**
- *
+ * This function parses the log file, tries to update all lines that end up 
+ * with :0 and then replaces the 0 with 1.
+ * 
+ * @param type $aUnQuery
  * @param type $aFileName 
  */
 function updateLogged($aUnQuery, $aFileName) {
     echo "</br><b>maintenance started</b></br>";
-    $f = fopen($aFileName, 'r');
-    $counter = 0;
-    
-    while (!feof($f)) {
-        $line = fgets($f, 2048);
+    $fileAr = file($aFileName);
+    $uidCtr = 0;
+
+    foreach ($fileAr as $i => $elem) {
+        $line = $fileAr[$i];
         $delim = ':';
         $data = str_getcsv($line, $delim);
 
         if ($data[1] == 0) {
-            sqlUnsubscribe($aUnQuery, $data[0]);
-            echo "</br>Unsubscribing: " . $data[0];
-            $counter++;
+            $sqlError = sqlUnsubscribe($aUnQuery, $data[0]);
+            if($sqlError == false){
+                $data[1] = 1;
+                $fileAr[$i] = $data[0] . $delim . $data[1] . "\n";
+                echo "</br>Unsubscribing: " . $data[0];
+                $uidCtr++;
+            } else {
+                echo "</br>Error with database connection.";
+                break;
+            }
         }
     }
-    echo "</br><b>maintenance finished - UUIDs processed: </b>" . ($counter-1) 
-            . "</br>";
+    file_put_contents($aFileName, implode('', $fileAr), LOCK_EX);
+    
+    echo "</br><b>maintenance finished - UUIDs processed: </b>" . ($uidCtr - 1)
+    . "</br>";
 }
 
 ?>
