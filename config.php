@@ -11,7 +11,7 @@ $dbuser = 'unsubscriber';
 $dbpass = 'UnsuBsCr1B3R';
 
 //name of database - schema
-$dbname = 'h4dMailList';
+$dbname = 'h4dMailDummy';
 
 //Email Table Name
 $emailT = 'Email';
