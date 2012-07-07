@@ -4,11 +4,11 @@
  * Configuration file containing database connection info... 
  */
 //The url of the database
-$dbhost = 'base117.dyndns.org';
+$dbhost = '10.0.0.117';
 
 //username and password
 $dbuser = 'unsubscriber';
-$dbpass = 'UnSuBscr1b3r117';
+$dbpass = 'UnsuBsCr1B3R';
 
 //name of database - schema
 $dbname = 'h4dMailList';
@@ -57,6 +57,6 @@ $mesEnding = '</b></br>has been succesfully unsubscribed from the newsletter ema
  *  has been logged and may be removed from the database in the near future...
  */
 
-$dataFail = 'Your address has been logged in order to be unsubscribed from the newsletter email database.'
+$dataFail = '</br>Your address has been logged in order to be <b>unsubscribed</b> from the newsletter email database.'
 
 ?>
