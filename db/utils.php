@@ -1,13 +1,14 @@
 <?php
 
 include 'opendb.php';
-//include '../config.php';
-/**
- * Various sql standard functions for manipulating the database
- * Also utility functions needed for the project.
- * Update: Removed the other functions from the project, no need to have them.
- */
 
+/**
+ * Sends a prepared statement string update to the database.
+ * @global type $mysqli
+ * @param type $aQuery
+ * @param type $aUid
+ * @return boolean 
+ */
 function sqlUnsubscribe($aQuery, $aUid) {
     global $mysqli;
     //prepare unsubscribe statement
@@ -22,6 +23,12 @@ function sqlUnsubscribe($aQuery, $aUid) {
     }
 }
 
+/**
+ * Queries a database and gets back the result.
+ * @global type $mysqli
+ * @param type $query
+ * @return null 
+ */
 function sqliQuery($query) {
     global $mysqli;
     if ($query != "") {

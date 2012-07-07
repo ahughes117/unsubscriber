@@ -15,7 +15,6 @@ $uid = htmlspecialchars($_GET["uuid"]);
 $maintenance = htmlspecialchars($_GET["maintenance"]);
 
 if ($maintenance == 1) {
-    //echo $unQuery . $log;
     updateLogged($unQuery, $log);
 }
 
