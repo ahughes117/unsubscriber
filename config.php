@@ -37,6 +37,9 @@ $selQuery = "
     " FROM " . $emailT .
     " WHERE " . $uidC . " = ";
 
+//Queries that did not succeed to connect and interact with the database. (UUIDs)
+$log = 'errors.txt';
+
 /*
  * The following variables, are used in order to show the user a message of the
  * type: "Success! Address: sth@sth.com has been succesfully unsubscribed from
@@ -48,4 +51,12 @@ $selQuery = "
 
 $mesIntro = '<b>Success!</b> Email Address: <b>';
 $mesEnding = '</b></br>has been succesfully unsubscribed from the newsletter email database.';
+
+/*
+ *  The following variable contains a message describing that his email address
+ *  has been logged and may be removed from the database in the near future...
+ */
+
+$dataFail = 'Your address has been logged in order to be unsubscribed from the newsletter email database.'
+
 ?>
