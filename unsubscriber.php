@@ -5,8 +5,12 @@ include 'db/utils.php';
 include 'config.php';
 
 /**
- * php unsubscriber. Takes a uuid as a parameter in the url.
+ * php unsubscriber. Takes a uuid as a parameter in the url for unsubscription, 
+ * or a maintenance parameter for executing logged failed updates to the database.
+ * (Connectivity issues, personal use-favor feature, the home mysql database of a 
+ * friend does not run 24/7)
  */
+
 $uid = htmlspecialchars($_GET["uuid"]);
 $maintenance = htmlspecialchars($_GET["maintenance"]);
 

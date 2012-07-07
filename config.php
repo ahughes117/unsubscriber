@@ -38,7 +38,7 @@ $selQuery = "
     " WHERE " . $uidC . " = ";
 
 //Queries that did not succeed to connect and interact with the database. (UUIDs)
-$log = 'errors.txt';
+$log = 'log';
 
 /*
  * The following variables, are used in order to show the user a message of the
