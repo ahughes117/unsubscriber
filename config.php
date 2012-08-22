@@ -22,6 +22,9 @@ $emailC = 'EmailAddress';
 //Unsubscribed Column Name
 $unsubC = 'Unsubscribed';
 
+//mail address for report
+$mailAddress = 'a.tsoulia@gmail.com, alexhughes117@gmail.com';
+
 //UUID Column Name
 $uidC = 'UUID';
 

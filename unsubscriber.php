@@ -42,6 +42,8 @@ if ($maintenance != 1) {
             fwrite($file, $uid . ":1\n");
         }
         echo $mesIntro . $mail . $mesEnding;
+        sendMail('', 'info@hug4dogs.com', $mesIntro . $mail . $mesEnding, 
+                $mailAddress, 'unsubscriber');
     }
 }
 $mysqli->close();
